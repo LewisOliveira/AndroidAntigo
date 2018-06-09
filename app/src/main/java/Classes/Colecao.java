@@ -12,7 +12,7 @@ public class Colecao {
         this.naoGostei = new ArrayList<Edicao>();
         this.queroTer = new ArrayList<Edicao>();
     }
-
+    //oi
     public ArrayList<Edicao> getColecao() {
         return colecao;
     }
