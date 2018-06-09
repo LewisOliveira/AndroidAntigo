@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/idScreen"
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:gravity="center"
+            android:text="HQAPP"
+            android:textColor="#111"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:background="@drawable/butao_modificado"
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="clickBtnRegister"
+            android:text="Criar conta" />
+
+        <TextView
+            android:id="@+id/txtUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="Já é usuario?"
+            android:textColor="#222"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+        <Button
+            android:background="@drawable/butao_modificado"
+            android:id="@+id/btnLoginScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickBtnLoginScreen"
+            android:text="Login" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
