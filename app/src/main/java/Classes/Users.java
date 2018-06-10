@@ -1,5 +1,6 @@
 package Classes;
 
+import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
@@ -122,6 +123,8 @@ public class Users {
         return false;
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean equals(Object o) {
         if (this == o)
