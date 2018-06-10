@@ -14,7 +14,6 @@ public class Edicao extends Quadrinhos {
     private String mesPublicacaoBrasil;
     private int anoPublicacaoOriginal;
     private String mesPublicacaoOriginal;
-    public static ArrayList<Edicao> edicoes = new ArrayList<Edicao>();
     private ArrayList<Rating> rating;
 
 
@@ -23,7 +22,6 @@ public class Edicao extends Quadrinhos {
         this.editora = editora;
         this.autores = autores;
         this.licenciante = licenciante;
-        this.totalEdicoes = totalEdicoes;
         this.numeroEdicao = numeroEdicao;
         this.capa = capa;
         this.descricao = descricao;
@@ -33,16 +31,9 @@ public class Edicao extends Quadrinhos {
         this.anoPublicacaoOriginal = anoPublicacaoOriginal;
         this.mesPublicacaoOriginal = mesPublicacaoOriginal;
         rating = new ArrayList<Rating>();
-        edicoes.add(this);
     }
 
-    public static Edicao getEdicaoByNome(String nome, int numero) {
-        for (int i = 0; i < Edicao.edicoes.size(); i++) {
-            if ((Edicao.edicoes.get(i).getTitulo().equals(nome)) && (Edicao.edicoes.get(i).getNumeroEdicao() == numero))
-                return Edicao.edicoes.get(i);
-        }
-        return null;
-    }
+
 
     public void addRating(Rating newRating) {
         if (rating.isEmpty()) {
@@ -158,14 +149,6 @@ public class Edicao extends Quadrinhos {
 
     public void setLicenciante(String licenciante) {
         this.licenciante = licenciante;
-    }
-
-    public int getTotalEdicoes() {
-        return totalEdicoes;
-    }
-
-    public void setTotalEdicoes(int totalEdicoes) {
-        this.totalEdicoes = totalEdicoes;
     }
 
     public static Edicao edicaoNova = new Edicao("Homem Aranha - O melhor","Abril","Marvel",4,"Todd Mcfarlane",1,R.mipmap.imagem1,"Melhores Historias do aranha por Todd Mcfarlane",12345678912345L, 1996, "Dezembro", 1987, "Março");
