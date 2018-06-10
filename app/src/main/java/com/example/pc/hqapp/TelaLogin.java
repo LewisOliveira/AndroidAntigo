@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import Classes.Banco;
 import Classes.Users;
 
 public class TelaLogin extends AppCompatActivity {
@@ -15,6 +16,8 @@ public class TelaLogin extends AppCompatActivity {
     EditText txtPassword;
     Button btnLogin;
     Button btnForgotPassword;
+    Banco b = new Banco(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +29,7 @@ public class TelaLogin extends AppCompatActivity {
     }
 
     public void clickBtnLogin(View view){
-        if(Users.autenticacaoUsuarioCadastrado(txtLogin.getText().toString(),txtPassword.getText().toString())) {
+        if(b.JaCadastrado(txtLogin.getText().toString(),txtPassword.getText().toString())){
             String txt = txtLogin.getText().toString();
             Bundle bundle = new Bundle();
             bundle.putString("Email",txt);
