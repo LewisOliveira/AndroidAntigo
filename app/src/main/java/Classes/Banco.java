@@ -143,4 +143,17 @@ public class Banco extends SQLiteOpenHelper {
             db.close();
         }
     }
+
+    public void CarregaColecao(Users user) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor c = db.rawQuery("select * from usuario " +
+                "join colecao on idcolecao = colecaoid where email=? and senha=?", new String[]{user.getEmail(), user.getSenha()});
+
+        try {
+            //Depois eu continuo...
+        } finally {
+            db.close();
+        }
+    }
 }
