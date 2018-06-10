@@ -11,46 +11,17 @@ public class Users {
     private String email;
     private String senha;
     private Colecao colecao;
-    public static ArrayList<Users> usuarios = new ArrayList<Users>();
+    private Banco banco;
 
     public Users(String nome, String email, String senha){
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.colecao = new Colecao();
-        Users.usuarios.add(this);
-    }
-    public static boolean autenticacaoUsuarioCadastrado(String email, String senha){
-        if(Users.usuarios.isEmpty()){
-            return false;
-        }
-        for(int i = 0; i < Users.usuarios.size(); i++){
-            if((Users.usuarios.get(i).getEmail().equals(email)) &&(Users.usuarios.get(i).getSenha().equals(senha))){
-                return true;
-            }
-        }
-        return false;
+        banco.CadastroUsuario(this);
     }
 
-    public static Users procuraUsuario(String nome, String email){
-        for(int i = 0; i < Users.usuarios.size(); i++){
-            if((Users.usuarios.get(i).getNome().equals(nome)) && (Users.usuarios.get(i).getEmail().equals(email))){
-                return Users.usuarios.get(i);
-            }
-        }
-        return null;
-    }
-
-    public static String getNomeByEmail(String emailNovo){
-        for(int i = 0; i < Users.usuarios.size();i++){
-            if(Users.usuarios.get(i).getEmail().toString().equals(emailNovo)){
-                return Users.usuarios.get(i).getNome().toString();
-            }
-        }
-        return "";
-    }
-
-    private String getSenha() {
+    public String getSenha() {
         return senha;
     }
 
@@ -77,6 +48,7 @@ public class Users {
     public void setColecao(Colecao colecao) {
         this.colecao = colecao;
     }
+
 
     public Edicao procuraArrayEdicao(ArrayList<Edicao> edicoes, String titulo, int numeroEdicao) {
         for (int i = 0; i < edicoes.size(); i++) {

@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import Classes.Banco;
 import Classes.Edicao;
 import Classes.GridViewQuadrinhos;
 import Classes.Users;
@@ -17,13 +18,13 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
+        Banco b = new Banco(this);
         TextView oi = (TextView) findViewById(R.id.txtOla);
-        String Email = getIntent().getExtras().getString("Email");
-        String Login = Users.getNomeByEmail(Email);
+        String Login = b.LoginUsuario(getIntent().getExtras().getString("Email"),getIntent().getExtras().getString("Senha"));
         oi.setText("Olá " + Login);
         GridView grid1 = (GridView) findViewById(R.id.gridQuadrinhos);
         GridView grid2 = (GridView) findViewById(R.id.gridColecao);
-        Users usuario = Users.procuraUsuario(Email,Login);
+        //Users usuario = Users.procuraUsuario(Email,Login);
         //usuario.insereQuadrinhoColecao(Edicao.edicoes,"Alias",1);
         int[] imagens1 = new int[]{
                 R.mipmap.imagem1,
