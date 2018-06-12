@@ -8,16 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import Classes.Banco;
 import Classes.Users;
 
 public class TelaRegistro extends AppCompatActivity{
+    Users usuario = new Users();
     EditText nome;
     EditText senha;
     EditText confirm;
     EditText email;
     Button cadastrar;
-    Banco b = new Banco(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +33,61 @@ public class TelaRegistro extends AppCompatActivity{
         cadastrar.setOnClickListener(new View.OnClickListener(){
 
             @Override
-        public void onClick(View v) {
-            Intent intentLogin = new Intent(getApplicationContext(), TelaLogin.class);
-            Toast deuCerto = Toast.makeText(getApplicationContext(), "Cadastrado com sucesso", Toast.LENGTH_LONG);
-            if(b.JaCadastrado(email.getText().toString(),senha.getText().toString()) == false){
-                new Users(nome.getText().toString(), email.getText().toString(), senha.getText().toString());
-                deuCerto.show();
-                startActivity(intentLogin);
+            public void onClick(View v) {
+                Intent intentLogin = new Intent(getApplicationContext(), TelaLogin.class);
+                if(validarUsuario(email.getText().toString(),senha.getText().toString()) == false){
+                    salvarUsuario();
+                    startActivity(intentLogin);
+                }
 
-            }
-            if(b.SenhaDiferente(senha.getText().toString()))
-                Toast.makeText(getApplicationContext(), "A senha e a confirmação devem ser iguais", Toast.LENGTH_LONG).show();
-                else if (b.EmailCadastrado(email.getText().toString()))
+                if(SenhaDiferente(senha.getText().toString()))
+                    Toast.makeText(getApplicationContext(), "A senha e a confirmação devem ser iguais", Toast.LENGTH_LONG).show();
+                else if (EmailCadastrado(email.getText().toString()))
                     Toast.makeText(getApplicationContext(), "Email ja cadastrado", Toast.LENGTH_LONG).show();
                 else {
-                    new Users(nome.getText().toString(), email.getText().toString(), senha.getText().toString());
-                    deuCerto.show();
+                    salvarUsuario();
                     startActivity(intentLogin);
                 }
             }
         });
+    }
+
+    public void salvarUsuario(){
+        usuario.setNome(nome.getText().toString());
+        usuario.setEmail(email.getText().toString());
+        usuario.setSenha(senha.getText().toString());
+
+        Banco bd = new Banco(this);
+        bd.inserir(usuario);
+
+        Toast.makeText(this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
+    }
+
+    public boolean validarUsuario(String pEmail, String pSenha) {
+        Banco bd = new Banco(this);
+        ArrayList<Users> usuarios = bd.ListaUsuarios();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if ((usuarios.get(i).getEmail().equals(pEmail)) && (usuarios.get(i).getSenha().equals(pSenha)))
+                return true;
+        }
+        return false;
+    }
+    public boolean SenhaDiferente(String pSenha){
+        Banco bd = new Banco(this);
+        ArrayList<Users> usuarios = bd.ListaUsuarios();
+        for (int i = 0; i < usuarios.size(); i++){
+            if(usuarios.get(i).getSenha().equals(pSenha))
+                return true;
+        }
+        return false;
+    }
+    public boolean EmailCadastrado(String pEmail){
+        Banco bd = new Banco(this);
+        ArrayList<Users> usuarios = bd.ListaUsuarios();
+        for (int i = 0; i < usuarios.size(); i++){
+            if(usuarios.get(i).getEmail().equals(pEmail))
+                return true;
+        }
+        return false;
     }
 }

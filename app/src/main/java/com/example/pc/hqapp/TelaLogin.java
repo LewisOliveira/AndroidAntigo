@@ -8,15 +8,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import Classes.Banco;
 import Classes.Users;
 
 public class TelaLogin extends AppCompatActivity {
+    Users usuario = new Users();
     EditText txtLogin;
     EditText txtPassword;
     Button btnLogin;
     Button btnForgotPassword;
-    Banco b = new Banco(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,10 @@ public class TelaLogin extends AppCompatActivity {
     }
 
     public void clickBtnLogin(View view){
-        if(b.JaCadastrado(txtLogin.getText().toString(),txtPassword.getText().toString())){
-            String txt = txtLogin.getText().toString();
+
+        if(validarUsuario(txtLogin.getText().toString(),txtPassword.getText().toString()) == true){
+            //String txt = txtLogin.getText().toString();
+            String txt = usuario.getNome();
             Bundle bundle = new Bundle();
             bundle.putString("Email",txt);
             Intent intentLogin = new Intent(this, TelaInicial.class);
@@ -38,11 +42,21 @@ public class TelaLogin extends AppCompatActivity {
             startActivity(intentLogin);
         }
         else{
-            Toast.makeText(this,"Usuario não encontrado",Toast.LENGTH_LONG);
+            Toast.makeText(this,"Usuario não encontrado",Toast.LENGTH_LONG).show();
         }
     }
-
+/*
     public void clickBtnForgotPassword(View view){
 
+    }
+*/
+    public boolean validarUsuario(String pEmail, String pSenha) {
+        Banco bd = new Banco(this);
+        ArrayList<Users> usuarios = bd.ListaUsuarios();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if ((usuarios.get(i).getEmail().equals(pEmail)) && (usuarios.get(i).getSenha().equals(pSenha)))
+                return true;
+        }
+        return false;
     }
 }

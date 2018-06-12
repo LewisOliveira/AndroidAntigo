@@ -1,29 +1,35 @@
 package Classes;
 
 import android.annotation.TargetApi;
+import android.database.Cursor;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Users {
+    private long id;
     private String nome;
     private String email;
     private String senha;
     private Colecao colecao;
-    private Banco banco;
 
-    public Users(String nome, String email, String senha){
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.colecao = new Colecao();
-        banco.CadastroUsuario(this);
+    public long getId(){
+        return id;
+    }
+
+    public void setId(long id){
+        this.id = id;
     }
 
     public String getSenha() {
         return senha;
+    }
+
+    public void setSenha(String senha){
+        this.senha = senha;
     }
 
     public String getNome() {
@@ -49,7 +55,6 @@ public class Users {
     public void setColecao(Colecao colecao) {
         this.colecao = colecao;
     }
-
 
     public Edicao procuraArrayEdicao(ArrayList<Edicao> edicoes, String titulo, int numeroEdicao) {
         for (int i = 0; i < edicoes.size(); i++) {

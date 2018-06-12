@@ -6,26 +6,29 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
 
-import java.sql.SQLInput;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Banco extends SQLiteOpenHelper {
-    private static final String TAG = "sql";
-    public static final String NOME_BANCO = "banco.db";
-    private static final int VERSAO_BANCO = 1;
+    //private static final String TAG = "SQL";
+    private static final String NOME_BANCO = "banco";
+    private static final int VERSAO = 1;
 
-    public Banco(Context context) {
-        super(context, NOME_BANCO, null, VERSAO_BANCO);
+    public Banco (Context context){
+        super(context,NOME_BANCO,null,VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d(TAG, "Criação de tabela");
+
+        //Log.d(TAG, "Criação de tabela");
 
         db.execSQL("create table if not exists usuario (idUsuario integer PRIMARY KEY autoincrement, nome text, email text," +
                 " senha text," +
-                "colecaoid integer ," +
+                "colecaoid integer," +
                 "FOREIGN KEY(colecaoid) REFERENCES Colecao(idColecao));");
 
         db.execSQL("create table if not exists colecao (idColecao integer PRIMARY KEY autoincrement," +
@@ -55,105 +58,52 @@ public class Banco extends SQLiteOpenHelper {
                 "nota integer," +
                 "foreign key (usuarioid) references usuario(idUsuario));");
 
-        Log.d(TAG, "Tabela criada com sucesso");
+        //Log.d(TAG, "Tabela criada com sucesso");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
 
-    public String LoginUsuario(String email, String senha){
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor c = db.rawQuery("select * from usuario where email=? and senha=?", new String[]{email, senha});
-
-        try {
-                String emailB= c.getString(c.getColumnIndex("email"));
-
-                return emailB;
-        } finally {
-            db.close();
         }
-    }
 
-    public boolean EmailCadastrado(String email){
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor c = db.rawQuery("select email from usuario where email=?", new String[]{email});
-        String emailBanco = c.getString(c.getColumnIndex("email"));
-
-        try {
-            if((emailBanco.equals(email)))
-                return true;
-            else
-                return false;
-
-        } finally {
-            db.close();
-        }
-    }
-
-    public boolean SenhaDiferente(String senha){
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor c = db.rawQuery("select senha from usuario where email=?", new String[]{senha});
-        String senhaBanco = c.getString(c.getColumnIndex("senha"));
-
-        try {
-            if((senhaBanco == senha))
-                return true;
-            else
-                return false;
-
-        } finally {
-            db.close();
-        }
-    }
-
-    public void CadastroUsuario(Users users) {
+    public void inserir(Users usuario){
         SQLiteDatabase db = getWritableDatabase();
-
         try {
-            ContentValues values = new ContentValues();
+        ContentValues valores = new ContentValues();
+        valores.put("nome",usuario.getNome());
+        valores.put("email",usuario.getEmail());
+        valores.put("senha",usuario.getSenha());
 
-            values.put("nome", users.getNome());
-            values.put("email", users.getEmail());
-            values.put("senha", users.getSenha());
-
-            db.insert("usuario", null, values);
+        db.insert("usuario",null,valores);
         } finally {
             db.close();
         }
     }
 
-    public boolean JaCadastrado(String email, String senha) {
+    public ArrayList<Users> ListaUsuarios(){
         SQLiteDatabase db = getReadableDatabase();
 
-        Cursor c = db.rawQuery("select email,senha from usuario where email=? and senha=?", new String[]{email, senha});
-        String emailBanco = c.getString(c.getColumnIndex("email"));
-        String senhaBanco = c.getString(c.getColumnIndex("senha"));
+        ArrayList<Users> lista = new ArrayList<Users>();
+        try{
 
-        try {
-            if((emailBanco.equals(email)) && (senhaBanco==senha))
-                return true;
-            else
-                return false;
+        Cursor c = db.rawQuery("select * from usuario",null);
 
-        } finally {
+        if(c.getCount()>0){
+            c.moveToFirst();
+            do{
+                Users u = new Users();
+                u.setId(c.getLong(0));
+                u.setNome(c.getString(1));
+                u.setEmail(c.getString(2));
+                u.setSenha(c.getString(3));
+                lista.add(u);
+            }while (c.moveToNext());
+        }
+            c.close();
+        }
+        finally {
             db.close();
         }
-    }
-
-    public void CarregaColecao(Users user) {
-        SQLiteDatabase db = getReadableDatabase();
-
-        Cursor c = db.rawQuery("select * from usuario " +
-                "join colecao on idcolecao = colecaoid where email=? and senha=?", new String[]{user.getEmail(), user.getSenha()});
-
-        try {
-            //Depois eu continuo...
-        } finally {
-            db.close();
-        }
+        return lista;
     }
 }

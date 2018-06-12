@@ -1,12 +1,15 @@
 package com.example.pc.hqapp;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import Classes.Banco;
 import Classes.Edicao;
@@ -18,10 +21,10 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
-        Banco b = new Banco(this);
+        Users usuario = new Users();
         TextView oi = (TextView) findViewById(R.id.txtOla);
-        String Login = b.LoginUsuario(getIntent().getExtras().getString("Email"),getIntent().getExtras().getString("Senha"));
-        oi.setText("Olá " + Login);
+        usuario = identificaUsuario(getIntent().getExtras().getString("Email"),getIntent().getExtras().getString("Senha"));
+        oi.setText("Olá " + usuario.getNome());
         GridView grid1 = (GridView) findViewById(R.id.gridQuadrinhos);
         GridView grid2 = (GridView) findViewById(R.id.gridColecao);
         //Users usuario = Users.procuraUsuario(Email,Login);
@@ -61,5 +64,16 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
         Intent intent = new Intent(this,TelaQuadrinho.class);
         intent.putExtra("idImagem",idImagem);
         startActivity(intent);
+    }
+
+    public Users identificaUsuario(String pEmail, String pSenha){
+        Banco bd = new Banco(this);
+        ArrayList<Users> lista = bd.ListaUsuarios();
+
+        for (int i = 0; i < lista.size(); i++) {
+            if ((lista.get(i).getEmail().equals(pEmail)) && (lista.get(i).getSenha().equals(pSenha)))
+                return lista.get(i);
+        }
+        return null;
     }
 }
