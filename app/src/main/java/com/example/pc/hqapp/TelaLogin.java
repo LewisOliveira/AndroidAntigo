@@ -33,7 +33,7 @@ public class TelaLogin extends AppCompatActivity {
     public void clickBtnLogin(View view){
 
         if(validarUsuario(txtLogin.getText().toString(),txtPassword.getText().toString()) == true){
-            //String txt = txtLogin.getText().toString();
+            usuario = identificaUsuario(txtLogin.getText().toString(),txtPassword.getText().toString());
             String txt = usuario.getNome();
             Bundle bundle = new Bundle();
             bundle.putString("Email",txt);
@@ -58,5 +58,15 @@ public class TelaLogin extends AppCompatActivity {
                 return true;
         }
         return false;
+    }
+    public Users identificaUsuario(String pEmail, String pSenha){
+        Banco bd = new Banco(this);
+        ArrayList<Users> lista = bd.ListaUsuarios();
+
+        for (int i = 0; i < lista.size(); i++) {
+            if ((lista.get(i).getEmail().equals(pEmail)) && (lista.get(i).getSenha().equals(pSenha)))
+                return lista.get(i);
+        }
+        return null;
     }
 }

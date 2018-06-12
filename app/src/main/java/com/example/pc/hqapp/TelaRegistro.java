@@ -58,7 +58,7 @@ public class TelaRegistro extends AppCompatActivity{
         usuario.setSenha(senha.getText().toString());
 
         Banco bd = new Banco(this);
-        bd.inserir(usuario);
+        bd.inserirUsuario(usuario);
 
         Toast.makeText(this, "Cadastrado com sucesso", Toast.LENGTH_LONG).show();
     }

@@ -1,43 +1,44 @@
 package Classes;
 
-import java.util.ArrayList;
-
 public class Colecao {
-    private ArrayList<Edicao> colecao;
-    private ArrayList<Edicao> naoGostei;
-    private ArrayList<Edicao> queroTer;
+    private long id;
+    private long tipo;
+    private String descricao;
+    private long edicaoid;
 
-    public Colecao(){
-        this.colecao = new ArrayList<Edicao>();
-        this.naoGostei = new ArrayList<Edicao>();
-        this.queroTer = new ArrayList<Edicao>();
+    public long getId(){
+        return id;
     }
-    //oi
-    public ArrayList<Edicao> getColecao() {
-        return colecao;
+    public void setId(long id){
+        this.id = id;
     }
 
-    public void setColecao(ArrayList<Edicao> colecao) {
-        this.colecao = colecao;
+    public long getTipo(){
+        return tipo;
+    }
+    public  void setTipo(long tipo){
+        this.tipo = tipo;
     }
 
-    public ArrayList<Edicao> getNaoGostei() {
-        return naoGostei;
+    public  String getDescricao(){
+        if(getTipo() == 1)
+            return "Minha Coleção";
+        else if(getTipo() == 2)
+            return "Não Gostei";
+        else if(getTipo() == 3)
+            return "Quero Ter";
+        else
+            return "Tipo inválido";
     }
 
-    public void setNaoGostei(ArrayList<Edicao> naoGostei) {
-        this.naoGostei = naoGostei;
+    public long getEdicaoid(){
+        return edicaoid;
+    }
+    public void setEdicaoid(long edicaoid){
+        this.edicaoid = edicaoid;
     }
 
-    public ArrayList<Edicao> getQueroTer() {
-        return queroTer;
-    }
-
-    public void setQueroTer(ArrayList<Edicao> queroTer) {
-        this.queroTer = queroTer;
-    }
-
-    public boolean naColecao(String titulo, int numeroEdicao){
+    /*public boolean naColecao(String titulo, int numeroEdicao){
         for(int i = 0; i< this.colecao.size(); i++){
             if((this.colecao.get(i).getTitulo() == titulo) && (this.colecao.get(i).getNumeroEdicao() == numeroEdicao))
                 return true;
@@ -59,5 +60,5 @@ public class Colecao {
                 return true;
         }
         return false;
-    }
+    }*/
 }

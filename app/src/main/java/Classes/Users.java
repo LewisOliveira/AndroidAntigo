@@ -1,10 +1,8 @@
 package Classes;
 
 import android.annotation.TargetApi;
-import android.database.Cursor;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -14,7 +12,7 @@ public class Users {
     private String nome;
     private String email;
     private String senha;
-    private Colecao colecao;
+    private long colecaoid;
 
     public long getId(){
         return id;
@@ -47,13 +45,11 @@ public class Users {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Colecao getColecao() {
-        return colecao;
+    public long getColecaoid(){
+        return colecaoid;
     }
-
-    public void setColecao(Colecao colecao) {
-        this.colecao = colecao;
+    public void setColecaoid(long colecaoid){
+        this.colecaoid = colecaoid;
     }
 
     public Edicao procuraArrayEdicao(ArrayList<Edicao> edicoes, String titulo, int numeroEdicao) {
@@ -64,6 +60,7 @@ public class Users {
         }
         return null;
     }
+
     public boolean insereQuadrinhoColecao(Edicao edicao){
         this.colecao.getColecao().add(edicao);
         return true;
