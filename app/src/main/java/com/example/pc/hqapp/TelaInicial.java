@@ -24,11 +24,11 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
-        TextView oi = (TextView) findViewById(R.id.txtOla);
+        //TextView oi = (TextView) findViewById(R.id.txtOla);
         Banco bd = new Banco(this);
         String Email = getIntent().getExtras().getString("Email");
-        String Login = bd.nomeUsuario(Email);
-        oi.setText("Olá " + Login);
+       // String Login = bd.nomeUsuario(Email);
+        //oi.setText("Olá " + Login);
         GridView grid1 = (GridView) findViewById(R.id.gridQuadrinhos);
         GridView grid2 = (GridView) findViewById(R.id.gridColecao);
         //Users usuario = Users.procuraUsuario(Email,Login);
