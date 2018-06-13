@@ -22,7 +22,7 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
         setContentView(R.layout.activity_tela_inicial);
         Users usuario = new Users();
         TextView oi = (TextView) findViewById(R.id.txtOla);
-        usuario = identificaUsuario(getIntent().getExtras().getString("Email"),getIntent().getExtras().getString("Senha"));
+        usuario = identificaUsuario(getIntent().getExtras().getString("Email").toString(),getIntent().getExtras().getString("Senha"));
         oi.setText("Olá " + usuario.getNome());
         GridView grid1 = (GridView) findViewById(R.id.gridQuadrinhos);
         GridView grid2 = (GridView) findViewById(R.id.gridColecao);

@@ -1,9 +1,5 @@
 package Classes;
 
-        import com.example.pc.hqapp.R;
-
-        import java.util.ArrayList;
-
 public class Edicao extends Quadrinhos {
     private String autores;
     private int numeroEdicao;
@@ -14,27 +10,8 @@ public class Edicao extends Quadrinhos {
     private String mesPublicacaoBrasil;
     private int anoPublicacaoOriginal;
     private String mesPublicacaoOriginal;
-    private ArrayList<Rating> rating;
-
-
-    public Edicao(String titulo, String editora, String licenciante, int totalEdicoes, String autores, int numeroEdicao, int capa, String descricao, long ISBN, int anoPublicacaoBrasil, String mesPublicacaoBrasil, int anoPublicacaoOriginal, String mesPublicacaoOriginal) {
-        this.titulo = titulo;
-        this.editora = editora;
-        this.autores = autores;
-        this.licenciante = licenciante;
-        this.numeroEdicao = numeroEdicao;
-        this.capa = capa;
-        this.descricao = descricao;
-        this.ISBN = ISBN;
-        this.anoPublicacaoBrasil = anoPublicacaoBrasil;
-        this.mesPublicacaoBrasil = mesPublicacaoBrasil;
-        this.anoPublicacaoOriginal = anoPublicacaoOriginal;
-        this.mesPublicacaoOriginal = mesPublicacaoOriginal;
-        rating = new ArrayList<Rating>();
-    }
-
-
-
+    private int rankingid;
+/*
     public void addRating(Rating newRating) {
         if (rating.isEmpty()) {
             this.rating.add(newRating);
@@ -61,6 +38,15 @@ public class Edicao extends Quadrinhos {
 
         float media = (float) soma / this.rating.size();
         return media;
+    }
+*/
+
+    public String getAutores(){
+        return autores;
+    }
+
+    public void setAutores(String autores){
+        this.autores = autores;
     }
 
     public int getNumeroEdicao() {
@@ -151,6 +137,14 @@ public class Edicao extends Quadrinhos {
         this.licenciante = licenciante;
     }
 
+    public int getRankingid(){
+        return rankingid;
+    }
+
+    public void setRankingid(int rankingid){
+        this.rankingid = rankingid;
+    }
+/*
     public static Edicao edicaoNova = new Edicao("Homem Aranha - O melhor","Abril","Marvel",4,"Todd Mcfarlane",1,R.mipmap.imagem1,"Melhores Historias do aranha por Todd Mcfarlane",12345678912345L, 1996, "Dezembro", 1987, "Março");
     public Edicao edicaoNova2 = new Edicao("Alias", "Panini", "Marvel",  5,"Brian Michael Bendis & Michael Gaydos",  1, R.mipmap.imagem2, "Primeiro Volume Jessica Jones",9788573516777L , 2018, "Janeiro", 2001, "Novembro");
     public Edicao edicaoNova3 = new Edicao("Bidu - Caminhos","Panini","Mauricio de Souza Produções",1,"Eduardo Damasceno & Luís Felipe Garrocho",1,R.mipmap.imagem3,"Graphic Novel sobre o Bidu",8583680264L,2015,"Janeiro",2015,"Janeiro");
@@ -159,4 +153,5 @@ public class Edicao extends Quadrinhos {
     public Edicao edicaoNova6 = new Edicao("Guardiões do Louvre","Pipoca & Nanquim","Louvre Éditions",1,"Jiro Taniguchi",1,R.mipmap.imagem6,"Mangá originalmente lançado na frança, parte de um selo de quadrinhos do Louvre",9788593685094L,2018,"Abril",2014,"Novembro");
     public Edicao edicaoNova7 = new Edicao("Espadas e Bruxas","Pipoca & Nanquim","Esteban Maroto",1,"Esteban Maroto",1,R.mipmap.imagem7,"Compilação dos contos de barbaro do Esteban Maroto",978859365001L,2017,"Maio",2012,"Setembro");
     public Edicao edicaoNova8 = new Edicao("Lavagem","Mino","Shiko",1,"Shiko",1,R.mipmap.imagem8,"Publicação do Ilustrador Shiko",8569032005L,2015,"Abril",2015,"Abril");
+*/
 }

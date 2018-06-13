@@ -60,7 +60,7 @@ public class Users {
         }
         return null;
     }
-
+/*
     public boolean insereQuadrinhoColecao(Edicao edicao){
         this.colecao.getColecao().add(edicao);
         return true;
@@ -124,6 +124,7 @@ public class Users {
         }
         return false;
     }
+    */
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

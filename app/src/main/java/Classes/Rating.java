@@ -1,20 +1,13 @@
 package Classes;
 
 public class Rating {
-    private Users usuario;
     private int nota;
+    private int usuarioid;
 
-    public Rating(Users usuario,int nota){
-        this.usuario = usuario;
-        this.nota = nota;
-    }
+    public int getUsuario() { return usuarioid; }
 
-    public Users getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Users usuario) {
-        this.usuario = usuario;
+    public void setUsuario(int usuario) {
+        this.usuarioid = usuario;
     }
 
     public int getNota() {

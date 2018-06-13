@@ -76,7 +76,7 @@ public class TelaRegistro extends AppCompatActivity{
         Banco bd = new Banco(this);
         ArrayList<Users> usuarios = bd.ListaUsuarios();
         for (int i = 0; i < usuarios.size(); i++){
-            if(usuarios.get(i).getSenha().equals(pSenha))
+            if(!usuarios.get(i).getSenha().equals(pSenha))
                 return true;
         }
         return false;

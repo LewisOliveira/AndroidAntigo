@@ -34,9 +34,11 @@ public class TelaLogin extends AppCompatActivity {
 
         if(validarUsuario(txtLogin.getText().toString(),txtPassword.getText().toString()) == true){
             usuario = identificaUsuario(txtLogin.getText().toString(),txtPassword.getText().toString());
-            String txt = usuario.getNome();
+            String txt = txtLogin.getText().toString();
+            String txtSenha = txtPassword.getText().toString();
             Bundle bundle = new Bundle();
             bundle.putString("Email",txt);
+            bundle.putString("Senha",txtSenha);
             Intent intentLogin = new Intent(this, TelaInicial.class);
             intentLogin.putExtras(bundle);
             startActivity(intentLogin);

@@ -33,7 +33,6 @@ public class Banco extends SQLiteOpenHelper {
         db.execSQL("create table if not exists edicao (idEdicao integer PRIMARY KEY autoincrement," +
                 " autores text," +
                 " numeroEdicao integer," +
-                " comentario text," +
                 " capa integer," +
                 " descricao text," +
                 " isbn integer," +
@@ -43,13 +42,13 @@ public class Banco extends SQLiteOpenHelper {
                 " mesPublicacaoOriginal text," +
                 " titulo text," +
                 " editora text," +
-                " licenciantes," +
-                " quadrinhoid integer," +
+                " licenciantes text," +
+                //" quadrinhoid integer," +
                 " rankingid integer," +
                 "foreign key (rankingid) references ranking(idRanking));");
 
-        db.execSQL("create table if not exists ranking (idRanking integer primary key autoincrement, usuarioid integer," +
-                "nota integer," +
+        db.execSQL("create table if not exists ranking (idRanking integer primary key autoincrement, nota integer," +
+                "usuarioid integer," +
                 "foreign key (usuarioid) references usuario(idUsuario));");
     }
 
@@ -82,6 +81,43 @@ public class Banco extends SQLiteOpenHelper {
             valores.put("edicaoid",colecao.getEdicaoid());
             db.insert("colecao",null,valores);
 
+        } finally {
+            db.close();
+        }
+    }
+
+    public void inserirEdicao(Edicao edicao){
+        SQLiteDatabase db = getWritableDatabase();
+        try {
+            ContentValues valores = new ContentValues();
+            valores.put("autores",edicao.getAutores());
+            valores.put("numeroEdicao",edicao.getNumeroEdicao());
+            valores.put("capa",edicao.getCapa());
+            valores.put("descricao",edicao.getDescricao());
+            valores.put("isbn",edicao.getISBN());
+            valores.put("anoPublicacaoBrasil",edicao.getAnoPublicacaoBrasil());
+            valores.put("mesPublicacaoBrasil",edicao.getMesPublicacaoBrasil());
+            valores.put("anoPublicacaoOriginal",edicao.getAnoPublicacaoOriginal());
+            valores.put("mesPublicacaoOriginal",edicao.getMesPublicacaoOriginal());
+            valores.put("titulo",edicao.getTitulo());
+            valores.put("editora",edicao.getEditora());
+            valores.put("licenciante",edicao.getLicenciante());
+            valores.put("rankingid",edicao.getRankingid());
+
+            db.insert("edicao",null,valores);
+        } finally {
+            db.close();
+        }
+    }
+
+    public void inserirRanking(Rating ranking){
+        SQLiteDatabase db = getWritableDatabase();
+        try {
+            ContentValues valores = new ContentValues();
+            valores.put("nota", ranking.getNota());
+            valores.put("usuarioid",ranking.getUsuario());
+
+            db.insert("ranking",null,valores);
         } finally {
             db.close();
         }
@@ -140,7 +176,7 @@ public class Banco extends SQLiteOpenHelper {
         }
         return lista;
     }
-
+/*
     public Users identificaColecao(Users usuario, String pTipo){
         ArrayList<Users> listaU = ListaUsuarios();
         ArrayList<Colecao> listaC = ListaColecao();
@@ -153,6 +189,7 @@ public class Banco extends SQLiteOpenHelper {
         }
         return null;
     }
+
     public ArrayList<Edicao> naColecao(Colecao colecao){
         SQLiteDatabase db = getReadableDatabase();
 
@@ -232,5 +269,5 @@ public class Banco extends SQLiteOpenHelper {
         }
         return lista;
     }
-
+*/
 }
