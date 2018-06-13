@@ -299,27 +299,6 @@ public class Banco extends SQLiteOpenHelper {
         }
         return lista;
     }
-
-    public String nomeUsuario(String emailNovo){
-        SQLiteDatabase db = getReadableDatabase();
-        String nome = "";
-        try{
-
-            Cursor c = db.rawQuery("select nome from usuario where email == emailNovo",null);
-
-            if(c.getCount()>0){
-                c.moveToFirst();
-                do{
-                    nome = c.getString(1);
-                }while (c.moveToNext());
-            }
-            c.close();
-        }
-        finally {
-            db.close();
-        }
-        return nome;
-    }
 /*
     public ArrayList<Edicao> naColecao(Colecao colecao){
         SQLiteDatabase db = getReadableDatabase();
