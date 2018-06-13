@@ -2,11 +2,13 @@ package com.example.pc.hqapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class TelaQuadrinho extends AppCompatActivity {
-
+    Button btnAdicionarColecao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,11 @@ public class TelaQuadrinho extends AppCompatActivity {
             ImageView img = findViewById(R.id.ImageTelaImage);
             img.setImageResource(imagemName);
         }
-
+        btnAdicionarColecao = (Button) findViewById(R.id.btnAdicionarColecao);
     }
+
+    public void clickBtnAdicionarColecao(View view){
+        Toast.makeText(this, "Adicionado com sucesso!", Toast.LENGTH_SHORT).show();
+    }
+
 }

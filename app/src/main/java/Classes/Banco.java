@@ -53,18 +53,18 @@ public class Banco extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        }
+    }
 
     public void inserirUsuario(Users usuario){
         SQLiteDatabase db = getWritableDatabase();
         try {
-        ContentValues valores = new ContentValues();
-        valores.put("nome",usuario.getNome());
-        valores.put("email",usuario.getEmail());
-        valores.put("senha",usuario.getSenha());
-        valores.put("colecaoid",usuario.getColecaoid());
+            ContentValues valores = new ContentValues();
+            valores.put("nome",usuario.getNome());
+            valores.put("email",usuario.getEmail());
+            valores.put("senha",usuario.getSenha());
+            valores.put("colecaoid",usuario.getColecaoid());
 
-        db.insert("usuario",null,valores);
+            db.insert("usuario",null,valores);
         } finally {
             db.close();
         }
@@ -130,7 +130,6 @@ public class Banco extends SQLiteOpenHelper {
                     "'Publicação do Ilustrador Shiko',8569032005,2015,'Abril',2015,'Abril');");
 
             /*
-
             //Inserir Homem Aranha - O melhor
             db.execSQL("insert into edicao values('Homem Aranha - O melhor','Abril','Marvel','Todd Mcfarlane',4," +
                     "'https://http2.mlstatic.com/o-melhor-do-homem-aranha-ns-123-e-4-ed-abril-todd-D_NQ_NP_873911-MLB27041635026_032018-F.webp'," +
@@ -302,13 +301,10 @@ public class Banco extends SQLiteOpenHelper {
 /*
     public ArrayList<Edicao> naColecao(Colecao colecao){
         SQLiteDatabase db = getReadableDatabase();
-
         ArrayList<Colecao> listaColecao = ListaColecao();
         ArrayList<Edicao> listaEdicao = new ArrayList<>();
         try{
-
             Cursor c = db.rawQuery("select * from edicao where tipo like 'Minha Colecao'",null);
-
             if(c.getCount()>0){
                 c.moveToFirst();
                 do{
@@ -329,12 +325,9 @@ public class Banco extends SQLiteOpenHelper {
     }
     public ArrayList<Edicao> naoGostei(){
         SQLiteDatabase db = getReadableDatabase();
-
         ArrayList<Users> lista = new ArrayList<Users>();
         try{
-
             Cursor c = db.rawQuery("select * from edicao",null);
-
             if(c.getCount()>0){
                 c.moveToFirst();
                 do{
@@ -355,12 +348,9 @@ public class Banco extends SQLiteOpenHelper {
     }
     public ArrayList<Edicao> queroTer(){
         SQLiteDatabase db = getReadableDatabase();
-
         ArrayList<Users> lista = new ArrayList<Users>();
         try{
-
             Cursor c = db.rawQuery("select * from edicao",null);
-
             if(c.getCount()>0){
                 c.moveToFirst();
                 do{
