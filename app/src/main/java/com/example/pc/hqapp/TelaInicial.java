@@ -32,9 +32,8 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_inicial);
-        Users usuario = new Users();
         TextView oi = (TextView) findViewById(R.id.txtOla);
-        usuario = identificaUsuario(getIntent().getExtras().getString("Email").toString(),getIntent().getExtras().getString("Senha"));
+        Users usuario = identificaUsuario(getIntent().getExtras().getString("Email").toString(),getIntent().getExtras().getString("Senha"));
         oi.setText("Olá " + usuario.getNome());
         getImages();
     }
@@ -42,6 +41,15 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
+        Banco bd = new Banco(this);
+        ArrayList<Edicao> lista = bd.ListaEdicao();
+
+        for (int i = 0; i < lista.size(); i++) {
+            mImageUrls.add(lista.get(i).getCapa());
+            mNames.add(lista.get(i).getTitulo());
+        }
+
+/*
         mImageUrls.add("https://c1.staticflickr.com/5/4636/25316407448_de5fbf183d_o.jpg");
         mNames.add("Havasu Falls");
 
@@ -70,7 +78,7 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
 
         mImageUrls.add("https://i.imgur.com/ZcLLrkY.jpg");
         mNames.add("Washington");
-
+*/
         initRecyclerView();
     }
 

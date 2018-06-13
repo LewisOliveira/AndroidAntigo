@@ -47,11 +47,7 @@ public class TelaLogin extends AppCompatActivity {
             Toast.makeText(this,"Usuario não encontrado",Toast.LENGTH_LONG).show();
         }
     }
-/*
-    public void clickBtnForgotPassword(View view){
 
-    }
-*/
     public boolean validarUsuario(String pEmail, String pSenha) {
         Banco bd = new Banco(this);
         ArrayList<Users> usuarios = bd.ListaUsuarios();

@@ -30,7 +30,6 @@ public class GridViewQuadrinhos extends BaseAdapter{
 
     }
 
-
     @Override
     public int getCount() {
         return images.length;
