@@ -10,46 +10,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="107dp"
+        android:background="@drawable/plano_fundo2">
 
-        <TextView
-            android:id="@+id/idScreen"
-            android:layout_width="match_parent"
-            android:layout_height="148dp"
-            android:gravity="center"
-            android:text="HQAPP"
-            android:textColor="#111"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="304dp"
+            android:layout_height="204dp"
+            android:layout_gravity="center"
+            android:layout_margin="32dp"
+            app:srcCompat="@drawable/hqapp2" />
 
-        <Button
-            android:background="@drawable/butao_modificado"
+
+        <android.support.v7.widget.AppCompatButton
+            android:background="@drawable/botao_modificado_2"
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:gravity="center"
+            tools:layout_editor_absoluteX="10dp"
+            tools:layout_editor_absoluteY="281dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
             android:onClick="clickBtnRegister"
-            android:text="Criar conta" />
+            android:text="Criar conta"
+            />
 
         <TextView
             android:id="@+id/txtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
+            android:paddingBottom="2dp"
+            android:paddingLeft="25dp"
             android:paddingTop="5dp"
             android:text="Já é usuario?"
             android:textColor="#222"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:textSize="18dp"
+            android:textStyle="italic"
+           />
 
-        <Button
-            android:background="@drawable/butao_modificado"
+        <android.support.v7.widget.AppCompatButton
+            android:background="@drawable/botao_modificado_2"
             android:id="@+id/btnLoginScreen"
+            android:onClick="clickBtnLoginScreen"
+            android:text="Login"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="clickBtnLoginScreen"
-            android:text="Login" />
+            android:textColor="@android:color/white"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="70dp"
+            tools:layout_editor_absoluteY="391dp"
+            android:textSize="18dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+
+             />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

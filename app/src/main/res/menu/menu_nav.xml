@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/colecao"
+            android:title="@string/colecao"
+            android:icon="@drawable/colecao"
+             />
+
+        <item android:title="@string/minha_galeria"
+            android:id="@+id/galeria"
+            android:icon="@drawable/comic1"
+            />
+
+    </group>
+   <item
+       android:title="Conta"
+       tools:ignore="HardcodedText">
+
+       <menu>
+           <item android:title="Minha Conta"
+               android:id="@+id/conta"
+               tools:ignore="HardcodedText"
+               android:icon="@drawable/conta"/>
+
+           <item android:title="@string/sair"
+               android:id="@+id/sair"
+               tools:ignore="HardcodedText"
+               android:icon="@drawable/exit"
+              />
+
+       </menu>
+
+
+   </item>
+
+</menu>
