@@ -38,7 +38,7 @@ public class GridViewQuadrinhos extends BaseAdapter{
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return images[position];
     }
 
     @Override
