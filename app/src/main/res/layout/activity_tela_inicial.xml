@@ -25,22 +25,26 @@
             android:layout_below="@+id/txtOla"
             android:text="Ultimos Lançamentos" />
 
-        <android.support.v7.widget.RecyclerView
+        <GridView
+            android:id="@+id/gridQuadrinhos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recyclerView"
+            android:layout_height="114dp"
             android:layout_below="@+id/txtUltimoLancamentos"
-            android:orientation="horizontal">
-
-        </android.support.v7.widget.RecyclerView>
-
+            android:numColumns="3" />
 
         <TextView
             android:id="@+id/txtColecao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/recyclerView"
+            android:layout_below="@+id/gridQuadrinhos"
             android:text="Minha Coleção" />
+
+        <GridView
+            android:id="@+id/gridColecao"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:layout_below="@+id/txtColecao"
+            android:numColumns="3" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
