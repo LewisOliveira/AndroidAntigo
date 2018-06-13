@@ -1,12 +1,4 @@
 <resources>
     <string name="app_name">HQAPP</string>
     <string name="title_activity_tela_registro">TelaRegistro</string>
-    <string name="Nome_pessoa">Maria Gabriela</string>
-    <string name="colecao">Coleção</string>
-    <string name="minha_galeria">Minha galeria</string>
-    <string name="minha_conta">Minha Conta</string>
-    <string name="sair">Sair</string>
-    <string name="open_drawer">Abrir</string>
-    <string name="close_drawer">Fechar</string>
-
 </resources>

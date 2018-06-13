@@ -4,103 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TelaRegistro"
-    android:background="@drawable/plano_fundo2">
+    tools:context=".TelaRegistro">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteY="8dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="187dp"
-            android:layout_height="131dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:src="@drawable/hqapp2" />
+        <TextView
+            android:id="@+id/idCadastro"
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:gravity="center"
+            android:text="Tela de Cadastro"
+            android:textColor="#111"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
             android:id="@+id/textViewName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp">
+            android:text="Nome:"
+            android:textColor="#333"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
+            android:ems="10"
             android:inputType="textPersonName" />
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp">
+            android:text="E-mail:"
+            android:textColor="#333"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:hint="Email"
+            android:ems="10"
             android:inputType="textEmailAddress" />
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <TextView
             android:id="@+id/textViewPasswordNew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp">
+            android:text="Senha:"
+            android:textColor="#333"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/txtPasswordNew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Senha"
+            android:ems="10"
             android:inputType="textPassword" />
-        </android.support.design.widget.TextInputLayout>
 
-
-        <android.support.design.widget.TextInputLayout
+        <TextView
             android:id="@+id/textViewPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp" >
+            android:text="Confirmar Senha:"
+            android:textColor="#333"
+            android:textSize="18sp"
+            android:textStyle="italic" />
 
-        <android.support.v7.widget.AppCompatEditText
+        <EditText
             android:id="@+id/txtPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirme sua senha"
+            android:ems="10"
             android:inputType="textPassword" />
-        </android.support.design.widget.TextInputLayout>
 
-
-        <android.support.v7.widget.AppCompatButton
-            android:background="@drawable/botao_modificado_2"
+        <Button
+            android:background="@drawable/butao_modificado"
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar"
-            android:layout_margin="16dp"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:textColor="@android:color/white"
-            />
+            android:text="Cadastrar" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

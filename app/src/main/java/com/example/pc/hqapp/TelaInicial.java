@@ -85,10 +85,10 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     private void initRecyclerView(){
         Log.d(TAG,"initRecyclerView: init RecyclerView");
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(layoutManager);
+        //RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        //recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames, mImageUrls, this);
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
 
     }
 
