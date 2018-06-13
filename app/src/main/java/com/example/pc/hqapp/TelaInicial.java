@@ -3,6 +3,9 @@ package com.example.pc.hqapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -13,9 +16,18 @@ import java.util.ArrayList;
 import Classes.Banco;
 import Classes.Edicao;
 import Classes.GridViewQuadrinhos;
+import Classes.RecyclerViewAdapter;
 import Classes.Users;
 
 public class TelaInicial extends AppCompatActivity implements AdapterView.OnItemClickListener{
+
+    private static final String TAG = "MainActivity";
+
+    //vars
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,37 +36,52 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
         TextView oi = (TextView) findViewById(R.id.txtOla);
         usuario = identificaUsuario(getIntent().getExtras().getString("Email").toString(),getIntent().getExtras().getString("Senha"));
         oi.setText("Olá " + usuario.getNome());
-        GridView grid1 = (GridView) findViewById(R.id.gridQuadrinhos);
-        GridView grid2 = (GridView) findViewById(R.id.gridColecao);
-        //Users usuario = Users.procuraUsuario(Email,Login);
-        //usuario.insereQuadrinhoColecao(Edicao.edicoes,"Alias",1);
-        int[] imagens1 = new int[]{
-                R.mipmap.imagem1,
-                R.mipmap.imagem2,
-                R.mipmap.imagem3,
-                R.mipmap.imagem4,
-                R.mipmap.imagem5,
-                R.mipmap.imagem6,
-                R.mipmap.imagem7,
-                R.mipmap.imagem8,
-        };
+        getImages();
+    }
 
-        int[] imagens2 = new int[]{
-               R.mipmap.imagem8,
-               R.mipmap.imagem7,
-               R.mipmap.imagem6,
-               R.mipmap.imagem5,
-               R.mipmap.imagem4,
-               R.mipmap.imagem3,
-               R.mipmap.imagem2,
-               R.mipmap.imagem1,
+    private void getImages(){
+        Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        };
+        mImageUrls.add("https://c1.staticflickr.com/5/4636/25316407448_de5fbf183d_o.jpg");
+        mNames.add("Havasu Falls");
 
-        grid1.setOnItemClickListener(this);
-        grid2.setOnItemClickListener(this);
-        grid1.setAdapter(new GridViewQuadrinhos(this,imagens1));
-        grid2.setAdapter(new GridViewQuadrinhos(this,imagens2));
+        mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
+        mNames.add("Trondheim");
+
+        mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
+        mNames.add("Portugal");
+
+        mImageUrls.add("https://i.redd.it/j6myfqglup501.jpg");
+        mNames.add("Rocky Mountain National Park");
+
+
+        mImageUrls.add("https://i.redd.it/0h2gm1ix6p501.jpg");
+        mNames.add("Mahahual");
+
+        mImageUrls.add("https://i.redd.it/k98uzl68eh501.jpg");
+        mNames.add("Frozen Lake");
+
+
+        mImageUrls.add("https://i.redd.it/glin0nwndo501.jpg");
+        mNames.add("White Sands Desert");
+
+        mImageUrls.add("https://i.redd.it/obx4zydshg601.jpg");
+        mNames.add("Austrailia");
+
+        mImageUrls.add("https://i.imgur.com/ZcLLrkY.jpg");
+        mNames.add("Washington");
+
+        initRecyclerView();
+    }
+
+    private void initRecyclerView(){
+        Log.d(TAG,"initRecyclerView: init RecyclerView");
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mNames, mImageUrls, this);
+        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
