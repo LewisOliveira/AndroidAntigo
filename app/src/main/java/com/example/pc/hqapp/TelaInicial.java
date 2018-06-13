@@ -41,15 +41,15 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
     private void getImages(){
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
-        //Banco bd = new Banco(this);
-        //ArrayList<Edicao> lista = bd.ListaEdicao();
+        Banco bd = new Banco(this);
+        ArrayList<Edicao> lista = bd.ListaEdicao();
 
-        //for (int i = 0; i < lista.size(); i++) {
-       //     mImageUrls.add(lista.get(i).getCapa());
-        //    mNames.add(lista.get(i).getTitulo());
-       // }
+        for (int i = 0; i < lista.size(); i++) {
+            mImageUrls.add(lista.get(i).getCapa());
+            mNames.add(lista.get(i).getTitulo());
+        }
 
-
+/*
         mImageUrls.add("https://c1.staticflickr.com/5/4636/25316407448_de5fbf183d_o.jpg");
         mNames.add("Havasu Falls");
 
@@ -77,7 +77,7 @@ public class TelaInicial extends AppCompatActivity implements AdapterView.OnItem
         mNames.add("Austrailia");
 
         mImageUrls.add("https://i.imgur.com/ZcLLrkY.jpg");
-        mNames.add("Washington");
+        mNames.add("Washington"); */
 
         initRecyclerView();
     }
